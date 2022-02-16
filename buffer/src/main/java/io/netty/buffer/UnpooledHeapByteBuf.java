@@ -89,7 +89,9 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     protected void freeArray(byte[] array) {
-        // NOOP
+        if (ByteBufUtil.CLEAR_BUFFERS) {
+            ByteBufUtil.setZero(array, 0, array.length);
+        }
     }
 
     private void setArray(byte[] initialArray) {

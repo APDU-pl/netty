@@ -264,4 +264,9 @@ final class PooledUnsafeDirectByteBuf extends PooledByteBuf<ByteBuffer> {
         writerIndex = wIndex + length;
         return this;
     }
+
+    @Override
+    protected void memoryClean() {
+        UnsafeByteBufUtil.setZero(memoryAddress, length);
+    }
 }
