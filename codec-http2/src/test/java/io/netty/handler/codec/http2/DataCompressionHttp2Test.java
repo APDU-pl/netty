@@ -89,14 +89,14 @@ public class DataCompressionHttp2Test {
     public void setup() throws InterruptedException, Http2Exception {
         MockitoAnnotations.initMocks(this);
         doAnswer(invocation -> {
-            if (invocation.getArgument(4)) {
+            if ((boolean) invocation.getArgument(4)) {
                 serverConnection.stream((Integer) invocation.getArgument(1)).close();
             }
             return null;
         }).when(serverListener).onHeadersRead(any(ChannelHandlerContext.class), anyInt(), any(Http2Headers.class),
                 anyInt(), anyBoolean());
         doAnswer(invocation -> {
-            if (invocation.getArgument(7)) {
+            if ((boolean) invocation.getArgument(7)) {
                 serverConnection.stream((Integer) invocation.getArgument(1)).close();
             }
             return null;
@@ -347,7 +347,7 @@ public class DataCompressionHttp2Test {
 
             buf.readBytes(serverOut, buf.readableBytes());
 
-            if (in.getArgument(4)) {
+            if ((boolean) in.getArgument(4)) {
                 serverConnection.stream((Integer) in.getArgument(1)).close();
             }
             return processedBytes;
