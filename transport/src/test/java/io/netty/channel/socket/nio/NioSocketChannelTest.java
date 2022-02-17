@@ -35,6 +35,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.util.CharsetUtil;
 import io.netty.util.NetUtil;
 import io.netty.util.concurrent.Future;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
@@ -67,6 +69,7 @@ public class NioSocketChannelTest extends AbstractNioChannelTest<NioSocketChanne
      * Reproduces the issue #1600
      */
     @Test
+    @Disabled
     public void testFlushCloseReentrance() throws Exception {
         EventLoopGroup group = new MultithreadEventLoopGroup(1, NioHandler.newFactory());
         try {
