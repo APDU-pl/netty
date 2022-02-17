@@ -98,7 +98,7 @@ public final class ByteBufUtil {
         MAX_CHAR_BUFFER_SIZE = SystemPropertyUtil.getInt("io.netty.maxThreadLocalCharBufferSize", 16 * 1024);
         logger.debug("-Dio.netty.maxThreadLocalCharBufferSize: {}", MAX_CHAR_BUFFER_SIZE);
 
-        CLEAR_BUFFERS = SystemPropertyUtil.getBoolean("io.netty.clearBuffers", true);
+        CLEAR_BUFFERS = SystemPropertyUtil.getBoolean("io.netty.clearBuffers", false);
         logger.debug("-Dio.netty.clearBuffers: {}", CLEAR_BUFFERS);
     }
 
